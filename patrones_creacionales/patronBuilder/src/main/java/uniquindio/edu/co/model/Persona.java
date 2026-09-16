@@ -1,5 +1,8 @@
 package uniquindio.edu.co.model;
 
+/**
+ * Clase que permite mapear una persona
+ */
 public class Persona {
 
     private String nombre;
@@ -9,6 +12,15 @@ public class Persona {
     private int telefono;
     private String email;
 
+    /**
+     * Metodo constructor de la clase persona
+     * @param nombre de la persona
+     * @param edad de la persona
+     * @param fechaNacimiento de la persona
+     * @param genero de la persona
+     * @param telefono de la persona
+     * @param email de la persona
+     */
     public Persona(String nombre, int edad, String fechaNacimiento, String genero, int telefono, String email) {
         this.nombre = nombre;
         this.edad = edad;
@@ -38,6 +50,14 @@ public class Persona {
 
     public Persona(String nombre, int edad) {
         this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    /**
+     * Metodo que permite modificar la edad de una persona
+     * @param edad
+     */
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 

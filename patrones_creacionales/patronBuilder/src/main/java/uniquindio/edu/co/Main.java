@@ -7,7 +7,7 @@ import uniquindio.edu.co.model.PersonaBuilder;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         //-----Forma de crear objetos sin el patron builder
         Persona persona1 = new Persona("Raul",
@@ -33,6 +33,12 @@ public class Main {
 
         System.out.println(persona3);
         System.out.println(persona4);
+
+        // Patron prototype
+        PersonaBuilder persona5 = persona3.clonar();
+        System.out.println(persona5);
+        persona5.setFechaNacimiento("1990");
+        System.out.println(persona5);
 
     }
 

@@ -1,6 +1,6 @@
 package uniquindio.edu.co.model;
 
-public class PersonaBuilder {
+public class PersonaBuilder implements Cloneable {
 
     private String nombre;
     private int edad;
@@ -9,6 +9,10 @@ public class PersonaBuilder {
     private int telefono;
     private String email;
 
+    /**
+     * Metodo constructor que permite crear personsas de forma flexible
+     * @param builder
+     */
     public PersonaBuilder(Builder builder) {
         this.nombre = builder.nombre;
         this.edad = builder.edad;
@@ -16,6 +20,15 @@ public class PersonaBuilder {
         this.genero = builder.genero;
         this.telefono = builder.telefono;
         this.email = builder.fechaNacimiento;
+    }
+
+    /**
+     * Metodo que permite clonar objetos de tipo PersonaBuilder
+     * @return PersonaBuilder
+     * @throws CloneNotSupportedException
+     */
+    public PersonaBuilder clonar() throws CloneNotSupportedException {
+        return (PersonaBuilder) super.clone();
     }
 
     //Setter y getter
@@ -91,6 +104,11 @@ public class PersonaBuilder {
         private int telefono;
         private String email;
 
+        /**
+         * Metodo que permite construir el nombre de una persona
+         * @param nombre de la persona
+         * @return
+         */
         public Builder nombre(String nombre){
             this.nombre = nombre;
             return this;
