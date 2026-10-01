@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="1050"
+            prefHeight="720"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.pismartgym.viewController.InscripcionViewController">
+
+    <top>
+
+        <VBox spacing="10">
+
+            <padding>
+                <Insets top="20"
+                        left="20"
+                        right="20"/>
+            </padding>
+
+            <Label text="Gestión de Inscripciones"
+                   style="-fx-font-size:22px; -fx-font-weight:bold;"/>
+
+            <GridPane hgap="10"
+                      vgap="10">
+
+                <Label text="Código:"
+                       GridPane.rowIndex="0"/>
+
+                <TextField fx:id="txtCodigo"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="0"/>
+
+                <Label text="Fecha:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="0"/>
+
+                <DatePicker fx:id="dpFecha"
+                            GridPane.columnIndex="3"
+                            GridPane.rowIndex="0"/>
+
+                <Label text="Cliente:"
+                       GridPane.rowIndex="1"/>
+
+                <ComboBox fx:id="cmbCliente"
+                          prefWidth="250"
+                          GridPane.columnIndex="1"
+                          GridPane.rowIndex="1"/>
+
+                <Label text="Plan:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="1"/>
+
+                <ComboBox fx:id="cmbPlan"
+                          prefWidth="250"
+                          GridPane.columnIndex="3"
+                          GridPane.rowIndex="1"/>
+
+                <Label text="Descuento %:"
+                       GridPane.rowIndex="2"/>
+
+                <TextField fx:id="txtDescuento"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"/>
+
+                <Label text="Entrenador:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="2"/>
+
+                <ComboBox fx:id="cmbEntrenador"
+                          prefWidth="250"
+                          GridPane.columnIndex="3"
+                          GridPane.rowIndex="2"/>
+
+            </GridPane>
+
+            <HBox spacing="10">
+
+                <Button text="Crear inscripción"
+                        onAction="#onCrearInscripcion"/>
+
+                <Button text="Limpiar"
+                        onAction="#onLimpiar"/>
+
+                <Button text="Volver"
+                        onAction="#onVolver"/>
+
+            </HBox>
+
+            <Separator/>
+
+            <Label text="Agregar servicio a inscripción"
+                   style="-fx-font-weight:bold;"/>
+
+            <HBox spacing="10">
+
+                <ComboBox fx:id="cmbServicio"
+                          prefWidth="250"/>
+
+                <TextField fx:id="txtCantidad"
+                           promptText="Cantidad"/>
+
+                <Button text="Agregar servicio"
+                        onAction="#onAgregarServicio"/>
+
+            </HBox>
+
+        </VBox>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="tblInscripciones">
+
+            <columns>
+
+                <TableColumn fx:id="colCodigo"
+                             text="Código"/>
+
+                <TableColumn fx:id="colFecha"
+                             text="Fecha"/>
+
+                <TableColumn fx:id="colCliente"
+                             text="Cliente"
+                             prefWidth="200"/>
+
+                <TableColumn fx:id="colPlan"
+                             text="Plan"
+                             prefWidth="180"/>
+
+                <TableColumn fx:id="colDescuento"
+                             text="Descuento"/>
+
+                <TableColumn fx:id="colValor"
+                             text="Valor final"
+                             prefWidth="130"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+</BorderPane>

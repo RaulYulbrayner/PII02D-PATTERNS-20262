@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="650"
+      prefHeight="500"
+      spacing="20"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.poo.pismartgym.viewController.ConsultaViewController">
+
+    <padding>
+        <Insets top="25"
+                left="30"
+                right="30"
+                bottom="25"/>
+    </padding>
+
+    <Label text="Consultas SmartGym"
+           style="-fx-font-size:22px; -fx-font-weight:bold;"/>
+
+    <TitledPane text="Consultar cliente por teléfono"
+                expanded="true">
+
+        <VBox spacing="10">
+
+            <padding>
+                <Insets top="10"
+                        left="10"
+                        right="10"
+                        bottom="10"/>
+            </padding>
+
+            <TextField fx:id="txtTelefono"
+                       promptText="Número de teléfono"/>
+
+            <Button text="Consultar"
+                    onAction="#onConsultarTelefono"/>
+
+            <Label fx:id="lblResultadoTelefono"
+                   wrapText="true"/>
+
+        </VBox>
+
+    </TitledPane>
+
+    <TitledPane text="Ingresos por período"
+                expanded="true">
+
+        <VBox spacing="10">
+
+            <padding>
+                <Insets top="10"
+                        left="10"
+                        right="10"
+                        bottom="10"/>
+            </padding>
+
+            <HBox spacing="10">
+
+                <Label text="Desde:"/>
+
+                <DatePicker fx:id="dpInicio"/>
+
+                <Label text="Hasta:"/>
+
+                <DatePicker fx:id="dpFin"/>
+
+            </HBox>
+
+            <Button text="Calcular ingresos"
+                    onAction="#onCalcularIngresos"/>
+
+            <Label fx:id="lblIngresos"
+                   style="-fx-font-size:16px; -fx-font-weight:bold;"/>
+
+        </VBox>
+
+    </TitledPane>
+
+    <Button text="Volver"
+            onAction="#onVolver"/>
+
+</VBox>

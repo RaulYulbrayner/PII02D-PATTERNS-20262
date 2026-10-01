@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="1000"
+            prefHeight="700"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.pismartgym.viewController.PlanViewController">
+
+    <top>
+
+        <VBox spacing="10">
+
+            <padding>
+                <Insets top="20"
+                        left="20"
+                        right="20"/>
+            </padding>
+
+            <Label text="Gestión de Planes"
+                   style="-fx-font-size:22px; -fx-font-weight:bold;"/>
+
+            <GridPane hgap="10"
+                      vgap="10">
+
+                <Label text="Tipo:"
+                       GridPane.rowIndex="0"/>
+
+                <ComboBox fx:id="cmbTipoPlan"
+                          GridPane.columnIndex="1"
+                          GridPane.rowIndex="0"/>
+
+                <Label text="Código:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="0"/>
+
+                <TextField fx:id="txtCodigo"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="0"/>
+
+                <Label text="Nombre:"
+                       GridPane.rowIndex="1"/>
+
+                <TextField fx:id="txtNombre"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="1"/>
+
+                <Label text="Descripción:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="1"/>
+
+                <TextField fx:id="txtDescripcion"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="1"/>
+
+                <Label text="Duración meses:"
+                       GridPane.rowIndex="2"/>
+
+                <TextField fx:id="txtDuracion"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"/>
+
+                <Label text="Valor mensual:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="2"/>
+
+                <TextField fx:id="txtValor"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="2"/>
+
+                <Label text="Estado:"
+                       GridPane.rowIndex="3"/>
+
+                <ComboBox fx:id="cmbEstado"
+                          GridPane.columnIndex="1"
+                          GridPane.rowIndex="3"/>
+
+                <Label text="Sesiones:"
+                       GridPane.rowIndex="4"/>
+
+                <TextField fx:id="txtSesiones"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="4"/>
+
+                <Label text="Especialidad requerida:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="4"/>
+
+                <ComboBox fx:id="cmbEspecialidad"
+                          GridPane.columnIndex="3"
+                          GridPane.rowIndex="4"/>
+
+                <Label text="Objetivos:"
+                       GridPane.rowIndex="5"/>
+
+                <TextField fx:id="txtObjetivos"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="5"
+                           GridPane.columnSpan="3"/>
+
+            </GridPane>
+
+            <HBox spacing="10">
+
+                <Button text="Crear plan"
+                        onAction="#onCrear"/>
+
+                <Button text="Limpiar"
+                        onAction="#onLimpiar"/>
+
+                <Button text="Volver"
+                        onAction="#onVolver"/>
+
+            </HBox>
+
+        </VBox>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="tblPlanes">
+
+            <columns>
+
+                <TableColumn fx:id="colCodigo"
+                             text="Código"/>
+
+                <TableColumn fx:id="colNombre"
+                             text="Nombre"
+                             prefWidth="180"/>
+
+                <TableColumn fx:id="colTipo"
+                             text="Tipo"
+                             prefWidth="150"/>
+
+                <TableColumn fx:id="colDuracion"
+                             text="Meses"/>
+
+                <TableColumn fx:id="colValor"
+                             text="Valor mensual"
+                             prefWidth="130"/>
+
+                <TableColumn fx:id="colEstado"
+                             text="Estado"
+                             prefWidth="120"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+    <padding>
+        <Insets bottom="20"
+                left="20"
+                right="20"/>
+    </padding>
+
+</BorderPane>

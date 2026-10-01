@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER"
+      spacing="15.0"
+      prefWidth="500.0"
+      prefHeight="500.0"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.poo.pismartgym.viewController.PrimaryViewController">
+
+    <padding>
+        <Insets top="30" bottom="30" left="40" right="40"/>
+    </padding>
+
+    <Label text="SMARTGYM">
+        <font>
+            <Font size="26"/>
+        </font>
+    </Label>
+
+    <Label text="Sistema de Gestión del Gimnasio"/>
+
+    <Button text="Gestión de clientes"
+            prefWidth="250"
+            onAction="#onOpenCliente"/>
+
+    <Button text="Gestión de entrenadores"
+            prefWidth="250"
+            onAction="#onOpenEntrenador"/>
+
+    <Button text="Gestión de planes"
+            prefWidth="250"
+            onAction="#onOpenPlan"/>
+
+    <Button text="Servicios adicionales"
+            prefWidth="250"
+            onAction="#onOpenServicio"/>
+
+    <Button text="Inscripciones"
+            prefWidth="250"
+            onAction="#onOpenInscripcion"/>
+
+    <Button text="Consultas e ingresos"
+            prefWidth="250"
+            onAction="#onOpenConsulta"/>
+
+</VBox>

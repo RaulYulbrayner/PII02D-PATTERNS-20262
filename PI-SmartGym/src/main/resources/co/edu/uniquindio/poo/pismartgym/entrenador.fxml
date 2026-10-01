@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="900"
+            prefHeight="600"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.pismartgym.viewController.EntrenadorViewController">
+
+    <top>
+
+        <VBox spacing="10">
+
+            <padding>
+                <Insets top="20"
+                        left="20"
+                        right="20"/>
+            </padding>
+
+            <Label text="Gestión de Entrenadores"
+                   style="-fx-font-size:22px; -fx-font-weight:bold;"/>
+
+            <GridPane hgap="10"
+                      vgap="10">
+
+                <Label text="Identificación:"
+                       GridPane.rowIndex="0"/>
+
+                <TextField fx:id="txtIdentificacion"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="0"/>
+
+                <Label text="Nombre:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="0"/>
+
+                <TextField fx:id="txtNombre"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="0"/>
+
+                <Label text="Especialidad:"
+                       GridPane.rowIndex="1"/>
+
+                <ComboBox fx:id="cmbEspecialidad"
+                          GridPane.columnIndex="1"
+                          GridPane.rowIndex="1"/>
+
+                <Label text="Teléfono:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="1"/>
+
+                <TextField fx:id="txtTelefono"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="1"/>
+
+                <Label text="Tarifa por sesión:"
+                       GridPane.rowIndex="2"/>
+
+                <TextField fx:id="txtTarifa"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"/>
+
+            </GridPane>
+
+            <HBox spacing="10">
+
+                <Button text="Agregar"
+                        onAction="#onAgregar"/>
+
+                <Button text="Actualizar"
+                        onAction="#onActualizar"/>
+
+                <Button text="Eliminar"
+                        onAction="#onEliminar"/>
+
+                <Button text="Limpiar"
+                        onAction="#onLimpiar"/>
+
+                <Button text="Volver"
+                        onAction="#onVolver"/>
+
+            </HBox>
+
+        </VBox>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="tblEntrenadores">
+
+            <columns>
+
+                <TableColumn fx:id="colIdentificacion"
+                             text="Identificación"/>
+
+                <TableColumn fx:id="colNombre"
+                             text="Nombre"
+                             prefWidth="180"/>
+
+                <TableColumn fx:id="colEspecialidad"
+                             text="Especialidad"
+                             prefWidth="150"/>
+
+                <TableColumn fx:id="colTelefono"
+                             text="Teléfono"
+                             prefWidth="130"/>
+
+                <TableColumn fx:id="colTarifa"
+                             text="Tarifa"
+                             prefWidth="120"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+    <padding>
+        <Insets bottom="20"
+                left="20"
+                right="20"/>
+    </padding>
+
+</BorderPane>

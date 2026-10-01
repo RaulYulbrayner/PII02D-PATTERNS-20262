@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="850"
+            prefHeight="600"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.pismartgym.viewController.ServicioViewController">
+
+    <top>
+
+        <VBox spacing="10">
+
+            <padding>
+                <Insets top="20"
+                        left="20"
+                        right="20"/>
+            </padding>
+
+            <Label text="Servicios Adicionales"
+                   style="-fx-font-size:22px; -fx-font-weight:bold;"/>
+
+            <GridPane hgap="10" vgap="10">
+
+                <Label text="Código:"
+                       GridPane.rowIndex="0"/>
+
+                <TextField fx:id="txtCodigo"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="0"/>
+
+                <Label text="Nombre:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="0"/>
+
+                <TextField fx:id="txtNombre"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="0"/>
+
+                <Label text="Descripción:"
+                       GridPane.rowIndex="1"/>
+
+                <TextField fx:id="txtDescripcion"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="1"/>
+
+                <Label text="Precio:"
+                       GridPane.columnIndex="2"
+                       GridPane.rowIndex="1"/>
+
+                <TextField fx:id="txtPrecio"
+                           GridPane.columnIndex="3"
+                           GridPane.rowIndex="1"/>
+
+                <CheckBox fx:id="chkDisponible"
+                          text="Disponible"
+                          selected="true"
+                          GridPane.rowIndex="2"
+                          GridPane.columnIndex="1"/>
+
+            </GridPane>
+
+            <HBox spacing="10">
+
+                <Button text="Agregar"
+                        onAction="#onAgregar"/>
+
+                <Button text="Actualizar"
+                        onAction="#onActualizar"/>
+
+                <Button text="Eliminar"
+                        onAction="#onEliminar"/>
+
+                <Button text="Limpiar"
+                        onAction="#onLimpiar"/>
+
+                <Button text="Volver"
+                        onAction="#onVolver"/>
+
+            </HBox>
+
+        </VBox>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="tblServicios">
+
+            <columns>
+
+                <TableColumn fx:id="colCodigo"
+                             text="Código"/>
+
+                <TableColumn fx:id="colNombre"
+                             text="Nombre"
+                             prefWidth="180"/>
+
+                <TableColumn fx:id="colDescripcion"
+                             text="Descripción"
+                             prefWidth="250"/>
+
+                <TableColumn fx:id="colPrecio"
+                             text="Precio"/>
+
+                <TableColumn fx:id="colDisponible"
+                             text="Disponible"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+</BorderPane>
