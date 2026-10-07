@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.pismartgym.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Representa la inscripción de un cliente a un plan de entrenamiento
@@ -17,7 +18,7 @@ public class Inscripcion {
     private PlanEntrenamiento plan;
     private double porcentajeDescuento;
     private AsignacionEntrenador asignacionEntrenador;
-    private ArrayList<DetalleServicio> servicios;
+    private List<DetalleServicio> servicios;
 
     /**
      * Constructor privado utilizado únicamente por el Builder.
@@ -140,7 +141,7 @@ public class Inscripcion {
         this.asignacionEntrenador = asignacionEntrenador;
     }
 
-    public ArrayList<DetalleServicio> getServicios() {
+    public List<DetalleServicio> getServicios() {
         return servicios;
     }
 
