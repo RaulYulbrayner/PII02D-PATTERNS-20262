@@ -13,4 +13,5 @@ public class AdapterEntradaUSB implements CargadorUSBC {
         System.out.println("Convirtiendo de USB A USB-C");
         entradaUSB.cargarUSB();
     }
+
 }
