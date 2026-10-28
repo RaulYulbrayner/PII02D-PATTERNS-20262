@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="co.edu.uniquindio.poo.piitechsolutions.viewController.SolicitudesViewController"
+        fitToWidth="true"
+        hbarPolicy="NEVER"
+        style="-fx-background: #f3f6fb;
+               -fx-background-color: #f3f6fb;">
+
+    <content>
+        <VBox spacing="18.0"
+              fillWidth="true"
+              style="-fx-background-color: #f3f6fb;">
+
+            <padding>
+                <Insets top="5.0"
+                        right="5.0"
+                        bottom="20.0"
+                        left="5.0"/>
+            </padding>
+
+            <!-- Encabezado -->
+
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+
+                <VBox spacing="5.0">
+                    <Label
+                            text="Gestión de solicitudes"
+                            style="-fx-font-size: 23px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Label
+                            text="Registra contrataciones, consulta sus costos y confirma la disponibilidad de atención."
+                            wrapText="true"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #64748b;"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button
+                        text="Actualizar datos"
+                        onAction="#actualizarDatos"
+                        style="-fx-background-color: #e2e8f0;
+                               -fx-text-fill: #334155;
+                               -fx-font-weight: bold;
+                               -fx-cursor: hand;"/>
+            </HBox>
+
+            <!-- Sección 1: Registrar solicitud -->
+
+            <VBox spacing="13.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="1. Registrar nueva solicitud"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <HBox spacing="12.0">
+
+                    <VBox spacing="6.0"
+                          HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Código de solicitud"
+                                style="-fx-font-size: 12px;
+                                       -fx-text-fill: #475569;"/>
+
+                        <TextField
+                                fx:id="txtCodigoSolicitud"
+                                promptText="Ejemplo: SOL-001"
+                                prefHeight="38.0"
+                                maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="6.0"
+                          HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Cliente"
+                                style="-fx-font-size: 12px;
+                                       -fx-text-fill: #475569;"/>
+
+                        <ComboBox
+                                fx:id="cmbClientes"
+                                promptText="Seleccione un cliente"
+                                prefHeight="38.0"
+                                maxWidth="Infinity"/>
+                    </VBox>
+
+                </HBox>
+
+                <Separator/>
+
+                <Label
+                        text="Elementos que desea contratar"
+                        style="-fx-font-size: 13px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #334155;"/>
+
+                <Label
+                        text="Puede incluir servicios originales, personalizaciones y paquetes tecnológicos."
+                        wrapText="true"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #64748b;"/>
+
+                <HBox spacing="10.0"
+                      alignment="CENTER_LEFT">
+
+                    <ComboBox
+                            fx:id="cmbElementosDisponibles"
+                            promptText="Seleccione un servicio o paquete"
+                            prefHeight="38.0"
+                            maxWidth="Infinity"
+                            HBox.hgrow="ALWAYS"/>
+
+                    <Button
+                            text="Agregar"
+                            onAction="#agregarElemento"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+                </HBox>
+
+                <Label
+                        text="Elementos seleccionados"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <ListView
+                        fx:id="listaElementosSeleccionados"
+                        prefHeight="160.0"
+                        minHeight="110.0"
+                        maxWidth="Infinity"/>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+
+                    <Button
+                            text="Quitar elemento seleccionado"
+                            onAction="#quitarElemento"
+                            prefHeight="36.0"
+                            style="-fx-background-color: #fee2e2;
+                                   -fx-text-fill: #b91c1c;
+                                   -fx-cursor: hand;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0"
+                      style="-fx-background-color: #eff6ff;
+                             -fx-background-radius: 7;">
+
+                    <padding>
+                        <Insets top="12.0"
+                                right="14.0"
+                                bottom="12.0"
+                                left="14.0"/>
+                    </padding>
+
+                    <Label
+                            text="Subtotal estimado"
+                            style="-fx-font-size: 14px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblSubtotalEstimado"
+                            text="0"
+                            style="-fx-font-size: 20px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #1d4ed8;"/>
+                </HBox>
+
+                <Separator/>
+
+                <!-- Datos opcionales -->
+
+                <Label
+                        text="Datos opcionales"
+                        style="-fx-font-size: 13px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #334155;"/>
+
+                <HBox spacing="12.0">
+
+                    <VBox spacing="6.0"
+                          HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Fecha programada"
+                                style="-fx-font-size: 12px;
+                                       -fx-text-fill: #475569;"/>
+
+                        <DatePicker
+                                fx:id="dpFechaProgramada"
+                                promptText="Seleccione una fecha"
+                                prefHeight="38.0"
+                                maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="6.0"
+                          HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Prioridad"
+                                style="-fx-font-size: 12px;
+                                       -fx-text-fill: #475569;"/>
+
+                        <ComboBox
+                                fx:id="cmbPrioridad"
+                                promptText="Seleccione la prioridad"
+                                prefHeight="38.0"
+                                maxWidth="Infinity"/>
+                    </VBox>
+
+                </HBox>
+
+                <Label
+                        text="Observaciones"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <TextArea
+                        fx:id="txtObservaciones"
+                        promptText="Registre información adicional sobre la solicitud."
+                        prefRowCount="3"
+                        wrapText="true"
+                        maxWidth="Infinity"/>
+
+                <HBox alignment="CENTER_RIGHT"
+                      spacing="10.0">
+
+                    <Button
+                            text="Limpiar formulario"
+                            onAction="#limpiarFormulario"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #e2e8f0;
+                                   -fx-text-fill: #334155;
+                                   -fx-cursor: hand;"/>
+
+                    <Button
+                            text="Registrar solicitud"
+                            onAction="#registrarSolicitud"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+                </HBox>
+
+            </VBox>
+
+            <!-- Sección 2: Solicitudes registradas -->
+
+            <VBox spacing="12.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="2. Solicitudes registradas"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <Label
+                        text="Seleccione una solicitud para consultar su detalle y confirmar la contratación."
+                        wrapText="true"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #64748b;"/>
+
+                <ListView
+                        fx:id="listaSolicitudes"
+                        onMouseClicked="#seleccionarSolicitud"
+                        prefHeight="190.0"
+                        minHeight="130.0"
+                        maxWidth="Infinity"/>
+
+            </VBox>
+
+            <!-- Sección 3: Detalle y confirmación -->
+
+            <VBox spacing="13.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="3. Detalle y confirmación"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label
+                            text="Código"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblCodigoSolicitud"
+                            text="-"
+                            style="-fx-font-size: 13px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #334155;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label
+                            text="Cliente"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblClienteSolicitud"
+                            text="-"
+                            style="-fx-font-size: 13px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #334155;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label
+                            text="Estado"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblEstadoSolicitud"
+                            text="-"
+                            style="-fx-font-size: 13px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #334155;"/>
+                </HBox>
+
+                <Separator/>
+
+                <Label
+                        text="Resumen de costos"
+                        style="-fx-font-size: 14px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label
+                            text="Subtotal contratado"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblSubtotalSolicitud"
+                            text="0"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #334155;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label
+                            text="Desplazamiento de técnicos"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblDesplazamientoSolicitud"
+                            text="0"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #334155;"/>
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0"
+                      style="-fx-background-color: #eff6ff;
+                             -fx-background-radius: 7;">
+
+                    <padding>
+                        <Insets top="14.0"
+                                right="14.0"
+                                bottom="14.0"
+                                left="14.0"/>
+                    </padding>
+
+                    <Label
+                            text="Costo total"
+                            style="-fx-font-size: 14px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblTotalSolicitud"
+                            text="0"
+                            style="-fx-font-size: 21px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #1d4ed8;"/>
+                </HBox>
+
+                <Label
+                        text="La confirmación requiere disponibilidad de todas las especialidades presenciales solicitadas."
+                        wrapText="true"
+                        style="-fx-font-size: 11px;
+                               -fx-text-fill: #64748b;"/>
+
+                <HBox alignment="CENTER_RIGHT"
+                      spacing="10.0">
+
+                    <Button
+                            text="Verificar técnicos"
+                            onAction="#verificarTecnicos"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #e2e8f0;
+                                   -fx-text-fill: #334155;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                    <Button
+                            text="Confirmar solicitud"
+                            onAction="#confirmarSolicitud"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #16a34a;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+    </content>
+
+</ScrollPane>

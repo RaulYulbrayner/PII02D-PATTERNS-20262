@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="co.edu.uniquindio.poo.piitechsolutions.viewController.TecnicosViewController"
+        fitToWidth="true"
+        hbarPolicy="NEVER"
+        style="-fx-background: #f3f6fb;
+               -fx-background-color: #f3f6fb;">
+
+    <content>
+
+        <VBox spacing="18.0"
+              fillWidth="true"
+              style="-fx-background-color: #f3f6fb;">
+
+            <padding>
+                <Insets top="5.0"
+                        right="5.0"
+                        bottom="20.0"
+                        left="5.0"/>
+            </padding>
+
+            <!-- Encabezado -->
+
+            <HBox alignment="CENTER_LEFT"
+                  spacing="12.0">
+
+                <VBox spacing="5.0">
+
+                    <Label
+                            text="Técnicos especializados"
+                            style="-fx-font-size: 23px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Label
+                            text="Consulta la disponibilidad de técnicos y sus costos de desplazamiento."
+                            wrapText="true"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #64748b;"/>
+
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button
+                        text="Actualizar datos"
+                        onAction="#actualizarDatos"
+                        style="-fx-background-color: #e2e8f0;
+                               -fx-text-fill: #334155;
+                               -fx-font-weight: bold;
+                               -fx-cursor: hand;"/>
+
+            </HBox>
+
+            <!-- Sección 1: Consultar por especialidad -->
+
+            <VBox spacing="13.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="1. Consultar técnico por especialidad"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <Label
+                        text="Seleccione la especialidad técnica"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <HBox spacing="10.0"
+                      alignment="CENTER_LEFT">
+
+                    <ComboBox
+                            fx:id="cmbEspecialidades"
+                            onAction="#seleccionarEspecialidad"
+                            promptText="Seleccione una especialidad"
+                            prefHeight="38.0"
+                            maxWidth="Infinity"
+                            HBox.hgrow="ALWAYS"/>
+
+                    <Button
+                            text="Consultar técnico"
+                            onAction="#consultarTecnico"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                </HBox>
+
+                <Label
+                        text="La información se consulta mediante el proveedor de técnicos configurado en TechSolutions."
+                        wrapText="true"
+                        style="-fx-font-size: 11px;
+                               -fx-text-fill: #64748b;"/>
+
+            </VBox>
+
+            <!-- Sección 2: Información del técnico -->
+
+            <VBox spacing="13.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="2. Información del técnico"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="10.0">
+
+                    <Label
+                            text="Especialidad"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblEspecialidad"
+                            text="-"
+                            style="-fx-font-size: 13px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #334155;"/>
+
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="10.0">
+
+                    <Label
+                            text="Código del técnico"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblCodigoTecnico"
+                            text="-"
+                            style="-fx-font-size: 13px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #334155;"/>
+
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="10.0">
+
+                    <Label
+                            text="Disponibilidad"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblDisponibilidad"
+                            text="-"
+                            style="-fx-font-size: 13px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #334155;"/>
+
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0"
+                      style="-fx-background-color: #eff6ff;
+                             -fx-background-radius: 7;">
+
+                    <padding>
+                        <Insets top="14.0"
+                                right="14.0"
+                                bottom="14.0"
+                                left="14.0"/>
+                    </padding>
+
+                    <VBox spacing="4.0">
+
+                        <Label
+                                text="Costo de desplazamiento"
+                                style="-fx-font-size: 14px;
+                                       -fx-font-weight: bold;
+                                       -fx-text-fill: #172b4d;"/>
+
+                        <Label
+                                text="Valor informado por el proveedor"
+                                style="-fx-font-size: 11px;
+                                       -fx-text-fill: #64748b;"/>
+
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblCostoDesplazamiento"
+                            text="0"
+                            style="-fx-font-size: 21px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #1d4ed8;"/>
+
+                </HBox>
+
+                <Label
+                        text="Este valor es informativo. El costo aplicado a una solicitud se determina mediante la política de desplazamiento."
+                        wrapText="true"
+                        style="-fx-font-size: 11px;
+                               -fx-text-fill: #64748b;"/>
+
+            </VBox>
+
+            <!-- Sección 3: Consulta general -->
+
+            <VBox spacing="13.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0">
+
+                    <Label
+                            text="3. Consulta general de técnicos"
+                            style="-fx-font-size: 16px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Button
+                            text="Consultar todos"
+                            onAction="#consultarTodos"
+                            prefHeight="36.0"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                </HBox>
+
+                <Label
+                        text="Resultados por especialidad: código, disponibilidad y desplazamiento."
+                        wrapText="true"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #64748b;"/>
+
+                <ListView
+                        fx:id="listaResultados"
+                        prefHeight="220.0"
+                        minHeight="150.0"
+                        maxWidth="Infinity"/>
+
+                <Label
+                        text="Los resultados corresponden a las respuestas del proveedor configurado en la aplicación."
+                        wrapText="true"
+                        style="-fx-font-size: 11px;
+                               -fx-text-fill: #64748b;"/>
+
+            </VBox>
+
+        </VBox>
+
+    </content>
+
+</ScrollPane>

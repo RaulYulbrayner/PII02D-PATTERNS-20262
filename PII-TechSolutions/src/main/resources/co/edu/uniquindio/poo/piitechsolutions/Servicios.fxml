@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+
+<ScrollPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="co.edu.uniquindio.poo.piitechsolutions.viewController.ServiciosViewController"
+        fitToWidth="true"
+        hbarPolicy="NEVER"
+        style="-fx-background: #f3f6fb;
+               -fx-background-color: #f3f6fb;">
+
+    <content>
+
+        <VBox spacing="18.0"
+              fillWidth="true"
+              style="-fx-background-color: #f3f6fb;">
+
+            <padding>
+                <Insets top="5.0"
+                        right="5.0"
+                        bottom="20.0"
+                        left="5.0"/>
+            </padding>
+
+            <!-- Título de la pantalla -->
+
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+
+                <VBox spacing="5.0">
+
+                    <Label
+                            text="Catálogo de servicios"
+                            style="-fx-font-size: 23px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Label
+                            text="Consulta los servicios y agrega complementos según tus necesidades."
+                            wrapText="true"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #64748b;"/>
+
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button
+                        text="Actualizar catálogo"
+                        onAction="#actualizarCatalogo"
+                        style="-fx-background-color: #e2e8f0;
+                               -fx-text-fill: #334155;
+                               -fx-font-weight: bold;
+                               -fx-cursor: hand;"/>
+
+            </HBox>
+
+            <!-- Selección del servicio -->
+
+            <VBox spacing="12.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="18.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="1. Seleccionar servicio tecnológico"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <Label
+                        text="Servicio disponible"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <ComboBox
+                        fx:id="cmbServicios"
+                        onAction="#seleccionarServicio"
+                        maxWidth="Infinity"
+                        prefHeight="38.0"
+                        promptText="Seleccione un servicio"/>
+
+                <Label
+                        text="Descripción"
+                        style="-fx-font-size: 12px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #475569;"/>
+
+                <Label
+                        fx:id="lblDescripcion"
+                        text="Seleccione un servicio tecnológico"
+                        wrapText="true"
+                        maxWidth="Infinity"
+                        style="-fx-font-size: 13px;
+                               -fx-text-fill: #334155;"/>
+
+            </VBox>
+
+            <!-- Personalización -->
+
+            <VBox spacing="14.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="2. Personalizar servicio"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <Label
+                        text="Código de la personalización"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <TextField
+                        fx:id="txtCodigoPersonalizado"
+                        promptText="Ejemplo: SP-001"
+                        prefHeight="38.0"
+                        maxWidth="Infinity"/>
+
+                <Separator/>
+
+                <Label
+                        text="Complementos disponibles"
+                        style="-fx-font-size: 13px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #334155;"/>
+
+                <CheckBox
+                        fx:id="chkAtencionPrioritaria"
+                        text="Atención prioritaria"
+                        onAction="#seleccionarComplemento"
+                        style="-fx-font-size: 13px;
+                               -fx-text-fill: #334155;"/>
+
+                <CheckBox
+                        fx:id="chkSoporteTecnico"
+                        text="Soporte técnico durante 30 días"
+                        onAction="#seleccionarComplemento"
+                        style="-fx-font-size: 13px;
+                               -fx-text-fill: #334155;"/>
+
+                <CheckBox
+                        fx:id="chkAtencionDomicilio"
+                        text="Atención a domicilio"
+                        onAction="#seleccionarComplemento"
+                        style="-fx-font-size: 13px;
+                               -fx-text-fill: #334155;"/>
+
+                <Label
+                        text="La atención a domicilio puede requerir disponibilidad de un técnico especializado."
+                        wrapText="true"
+                        style="-fx-font-size: 11px;
+                               -fx-text-fill: #64748b;"/>
+
+                <Separator/>
+
+                <!-- Resumen de costos -->
+
+                <Label
+                        text="Resumen de costos"
+                        style="-fx-font-size: 14px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+
+                    <Label
+                            text="Costo base"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblCostoBase"
+                            text="0"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #334155;"/>
+
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+
+                    <Label
+                            text="Costo de complementos"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #475569;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblCostoComplementos"
+                            text="0"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #334155;"/>
+
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="10.0"
+                      style="-fx-background-color: #eff6ff;
+                             -fx-background-radius: 7;">
+
+                    <padding>
+                        <Insets top="12.0"
+                                right="12.0"
+                                bottom="12.0"
+                                left="12.0"/>
+                    </padding>
+
+                    <Label
+                            text="Costo total estimado"
+                            style="-fx-font-size: 14px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblCostoTotal"
+                            text="0"
+                            style="-fx-font-size: 20px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #1d4ed8;"/>
+
+                </HBox>
+
+                <HBox alignment="CENTER_RIGHT"
+                      spacing="10.0">
+
+                    <Button
+                            text="Limpiar"
+                            onAction="#limpiarFormulario"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #e2e8f0;
+                                   -fx-text-fill: #334155;
+                                   -fx-cursor: hand;"/>
+
+                    <Button
+                            text="Registrar personalización"
+                            onAction="#personalizarServicio"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                </HBox>
+
+            </VBox>
+
+            <!-- Lista de personalizaciones -->
+
+            <VBox spacing="12.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="3. Servicios personalizados registrados"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <Label
+                        text="Las personalizaciones pueden utilizarse posteriormente en paquetes y solicitudes."
+                        wrapText="true"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #64748b;"/>
+
+                <ListView
+                        fx:id="listaPersonalizados"
+                        prefHeight="190.0"
+                        minHeight="130.0"
+                        maxWidth="Infinity"/>
+
+            </VBox>
+
+        </VBox>
+
+    </content>
+
+</ScrollPane>

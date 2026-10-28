@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="co.edu.uniquindio.poo.piitechsolutions.viewController.PaquetesViewController"
+        fitToWidth="true"
+        hbarPolicy="NEVER"
+        style="-fx-background: #f3f6fb;
+               -fx-background-color: #f3f6fb;">
+
+    <content>
+
+        <VBox spacing="18.0"
+              fillWidth="true"
+              style="-fx-background-color: #f3f6fb;">
+
+            <padding>
+                <Insets top="5.0"
+                        right="5.0"
+                        bottom="20.0"
+                        left="5.0"/>
+            </padding>
+
+            <!-- Encabezado -->
+
+            <HBox alignment="CENTER_LEFT"
+                  spacing="12.0">
+
+                <VBox spacing="5.0">
+
+                    <Label
+                            text="Paquetes tecnológicos"
+                            style="-fx-font-size: 23px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #172b4d;"/>
+
+                    <Label
+                            text="Crea paquetes y combina servicios o paquetes existentes."
+                            wrapText="true"
+                            style="-fx-font-size: 13px;
+                                   -fx-text-fill: #64748b;"/>
+
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button
+                        text="Actualizar datos"
+                        onAction="#actualizarDatos"
+                        style="-fx-background-color: #e2e8f0;
+                               -fx-text-fill: #334155;
+                               -fx-font-weight: bold;
+                               -fx-cursor: hand;"/>
+
+            </HBox>
+
+            <!-- Sección 1: Creación de paquetes -->
+
+            <VBox spacing="13.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="1. Crear paquete tecnológico"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <HBox spacing="12.0">
+
+                    <VBox spacing="6.0"
+                          HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Código del paquete"
+                                style="-fx-font-size: 12px;
+                                       -fx-text-fill: #475569;"/>
+
+                        <TextField
+                                fx:id="txtCodigoPaquete"
+                                promptText="Ejemplo: PAQ-003"
+                                prefHeight="38.0"
+                                maxWidth="Infinity"/>
+
+                    </VBox>
+
+                    <VBox spacing="6.0"
+                          HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Nombre del paquete"
+                                style="-fx-font-size: 12px;
+                                       -fx-text-fill: #475569;"/>
+
+                        <TextField
+                                fx:id="txtNombrePaquete"
+                                promptText="Ejemplo: Paquete integral"
+                                prefHeight="38.0"
+                                maxWidth="Infinity"/>
+
+                    </VBox>
+
+                </HBox>
+
+                <Label
+                        text="Descripción del paquete"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <TextArea
+                        fx:id="txtDescripcionPaquete"
+                        promptText="Describa los servicios que ofrecerá el paquete."
+                        prefRowCount="3"
+                        wrapText="true"
+                        maxWidth="Infinity"/>
+
+                <HBox alignment="CENTER_RIGHT"
+                      spacing="10.0">
+
+                    <Button
+                            text="Limpiar"
+                            onAction="#limpiarFormulario"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #e2e8f0;
+                                   -fx-text-fill: #334155;
+                                   -fx-cursor: hand;"/>
+
+                    <Button
+                            text="Crear paquete"
+                            onAction="#crearPaquete"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                </HBox>
+
+            </VBox>
+
+            <!-- Sección 2: Administración -->
+
+            <VBox spacing="14.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="2. Administrar componentes"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <Label
+                        text="Paquete que desea administrar"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <ComboBox
+                        fx:id="cmbPaquetes"
+                        onAction="#seleccionarPaquete"
+                        promptText="Seleccione un paquete"
+                        prefHeight="38.0"
+                        maxWidth="Infinity"/>
+
+                <Separator/>
+
+                <Label
+                        text="Servicio o paquete disponible"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <ComboBox
+                        fx:id="cmbElementos"
+                        promptText="Seleccione un elemento"
+                        prefHeight="38.0"
+                        maxWidth="Infinity"/>
+
+                <HBox alignment="CENTER_RIGHT"
+                      spacing="10.0">
+
+                    <Button
+                            text="Agregar al paquete"
+                            onAction="#agregarElemento"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #2563eb;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                </HBox>
+
+                <Label
+                        text="Puede agregar servicios originales, servicios personalizados u otros paquetes. No se permiten referencias circulares."
+                        wrapText="true"
+                        style="-fx-font-size: 11px;
+                               -fx-text-fill: #64748b;"/>
+
+            </VBox>
+
+            <!-- Sección 3: Componentes del paquete -->
+
+            <VBox spacing="13.0"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 10;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-radius: 10;">
+
+                <padding>
+                    <Insets top="18.0"
+                            right="20.0"
+                            bottom="20.0"
+                            left="20.0"/>
+                </padding>
+
+                <Label
+                        text="3. Componentes y costo del paquete"
+                        style="-fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #172b4d;"/>
+
+                <Label
+                        fx:id="lblNombrePaquete"
+                        text="Seleccione un paquete tecnológico"
+                        wrapText="true"
+                        style="-fx-font-size: 14px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #334155;"/>
+
+                <Label
+                        text="Elementos incorporados directamente"
+                        style="-fx-font-size: 12px;
+                               -fx-text-fill: #475569;"/>
+
+                <ListView
+                        fx:id="listaElementosPaquete"
+                        prefHeight="200.0"
+                        minHeight="130.0"
+                        maxWidth="Infinity"/>
+
+                <HBox alignment="CENTER_RIGHT"
+                      spacing="10.0">
+
+                    <Button
+                            text="Eliminar elemento seleccionado"
+                            onAction="#eliminarElemento"
+                            prefHeight="38.0"
+                            style="-fx-background-color: #fee2e2;
+                                   -fx-text-fill: #b91c1c;
+                                   -fx-font-weight: bold;
+                                   -fx-cursor: hand;"/>
+
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0"
+                      style="-fx-background-color: #eff6ff;
+                             -fx-background-radius: 7;">
+
+                    <padding>
+                        <Insets top="14.0"
+                                right="14.0"
+                                bottom="14.0"
+                                left="14.0"/>
+                    </padding>
+
+                    <VBox spacing="4.0">
+
+                        <Label
+                                text="Costo total del paquete"
+                                style="-fx-font-size: 14px;
+                                       -fx-font-weight: bold;
+                                       -fx-text-fill: #172b4d;"/>
+
+                        <Label
+                                text="Incluye los costos de los paquetes anidados."
+                                wrapText="true"
+                                style="-fx-font-size: 11px;
+                                       -fx-text-fill: #64748b;"/>
+
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            fx:id="lblCostoPaquete"
+                            text="0"
+                            style="-fx-font-size: 21px;
+                                   -fx-font-weight: bold;
+                                   -fx-text-fill: #1d4ed8;"/>
+
+                </HBox>
+
+                <Label
+                        text="El costo no incluye desplazamientos de técnicos, que se calculan al confirmar una solicitud."
+                        wrapText="true"
+                        style="-fx-font-size: 11px;
+                               -fx-text-fill: #64748b;"/>
+
+            </VBox>
+
+        </VBox>
+
+    </content>
+
+</ScrollPane>
